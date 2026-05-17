@@ -1,0 +1,18 @@
+# Entorno virtual
+venv/
+__pycache__/
+*.pyc
+
+# Archivos sensibles
+.env
+session_wa_jobs/
+*.log
+
+# Base de datos y caché
+*.db
+ocr_cache/
+sentinel_data/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

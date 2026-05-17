@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Monitor  - Manual de Instalación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: #4CAF50;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+        
+        /* Content */
+        .content {
+            padding: 40px;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #1a1a2e;
+            border-left: 4px solid #4CAF50;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .section h3 {
+            color: #333;
+            margin: 20px 0 15px 0;
+            font-size: 1.3em;
+        }
+        
+        /* Cards */
+        .os-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .os-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-top: 4px solid;
+        }
+        
+        .os-card.windows {
+            border-top-color: #0078D4;
+        }
+        
+        .os-card.linux {
+            border-top-color: #FCC624;
+        }
+        
+        .os-card h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .os-card h3 img {
+            width: 32px;
+            height: 32px;
+        }
+        
+        /* Tables */
+        .requirements-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .requirements-table th,
+        .requirements-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .requirements-table th {
+            background: #1a1a2e;
+            color: white;
+        }
+        
+        .requirements-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        /* Code blocks */
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .code-block.windows {
+            border-left: 4px solid #0078D4;
+        }
+        
+        .code-block.linux {
+            border-left: 4px solid #FCC624;
+        }
+        
+        /* Alert boxes */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border-left: 4px solid #17a2b8;
+        }
+        
+        /* Step boxes */
+        .step {
+            display: flex;
+            margin: 20px 0;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: #4CAF50;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        /* File tree */
+        .file-tree {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        
+        .file-tree .folder {
+            color: #e6a817;
+            font-weight: bold;
+        }
+        
+        .file-tree .file {
+            color: #4CAF50;
+        }
+        
+        /* Troubleshooting table */
+        .troubleshoot-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .troubleshoot-table th,
+        .troubleshoot-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        
+        .troubleshoot-table th {
+            background: #333;
+            color: white;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9em;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .code-block {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                page-break-inside: avoid;
+            }
+            
+            .alert {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                page-break-inside: avoid;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .os-cards {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .os-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📱 WhatsApp Monitor </h1>
+            <p>Manual de Instalación Paso a Paso</p>
+            <div class="version-badge">Versión v13 - Anti-Detección Avanzada</div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Requisitos del Sistema -->
+            <div class="section">
+                <h2>📋 Requisitos del Sistema</h2>
+                <table class="requirements-table">
+                    <thead>
+                        <tr><th>Requisito</th><th>Windows</th><th>Linux (Ubuntu/Debian)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>SO</strong></td><td>Windows 10/11</td><td>Ubuntu 20.04+, Debian 11+</td></tr>
+                        <tr><td><strong>RAM</strong></td><td colspan="2">4GB mínimo</td></tr>
+                        <tr><td><strong>Python</strong></td><td colspan="2">3.9 - 3.12</td></tr>
+                        <tr><td><strong>Espacio</strong></td><td colspan="2">2GB</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Windows Installation -->
+            <div class="section">
+                <h2>🪟 Instalación en Windows</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <strong>Instalar Python</strong>
+                        <p>Descarga Python 3.12 desde <a href="https://www.python.org/downloads/">python.org</a></p>
+                        <div class="alert alert-warning">
+                            ⚠️ <strong>IMPORTANTE:</strong> Marca ✅ "Add Python to PATH" durante la instalación
+                        </div>
+                        <p>Verifica la instalación:</p>
+                        <div class="code-block windows">python --version</div>
+                        <p>Deberías ver: <code>Python 3.12.x</code></p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <strong>Descargar el proyecto</strong>
+                        <p>Crea una carpeta para el proyecto:</p>
+                        <div class="code-block windows">
+                            mkdir C:\WhatsAppMonitor<br>
+                            cd C:\WhatsAppMonitor
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <strong>Copiar los archivos del proyecto</strong>
+                        <p>Copia todos los archivos <code>.py</code>, <code>AGENT.md</code> y <code>requirements.txt</code> a esta carpeta.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <strong>Instalar dependencias</strong>
+                        <p>Abre <strong>Símbolo del sistema (CMD)</strong> como administrador:</p>
+                        <div class="code-block windows">
+                            cd C:\WhatsAppMonitor<br>
+                            python -m pip install --upgrade pip<br>
+                            python -m pip install -r requirements.txt
+                        </div>
+                        <p>Si hay errores, instala uno por uno:</p>
+                        <div class="code-block windows">
+                            python -m pip install playwright openai python-dotenv PyQt6 numpy pillow<br>
+                            python -m pip install opencv-python pytesseract
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <strong>Instalar navegador Playwright</strong>
+                        <div class="code-block windows">python -m playwright install chromium</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <strong>Configurar API Key de DeepSeek</strong>
+                        <p>1. Obtén una API Key en <a href="https://platform.deepseek.com/">platform.deepseek.com</a></p>
+                        <p>2. Crea un archivo <code>.env</code> en la carpeta del proyecto:</p>
+                        <div class="code-block windows">echo DEEPSEEK_API_KEY=tu_api_key_aqui > .env</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <strong>Ejecutar la aplicación</strong>
+                        <div class="code-block windows">python launcher.py</div>
+                    </div>
+                </div>
+            </div>
+            
+                      <!-- Linux Installation CORREGIDA -->
+            <div class="section">
+                <h2>🐧 Instalación en Linux (Ubuntu/Debian)</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <strong>Verificar Python instalado</strong>
+                        <div class="code-block linux">
+                            python3 --version
+                        </div>
+                        <p><strong>Versiones aceptables:</strong> 3.9, 3.10, 3.11, 3.12</p>
+                        <div class="alert alert-success">
+                            ✅ Si ya tienes Python 3.9-3.12, <strong>no necesitas instalarlo</strong>, pasa al paso 2.
+                        </div>
+                        <div class="alert alert-warning">
+                            ⚠️ Python 3.12 podrías tener problemas con algunas librerías. Recomendamos usar 3.11.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <strong>Instalar Python SOLO si es necesario</strong>
+                        <p><em>Solo ejecuta esto si NO tienes Python o tu versión es inferior a 3.9</em></p>
+                        <div class="code-block linux">
+                            sudo apt update<br>
+                            sudo apt install -y python3.11 python3-pip python3-venv
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <strong>Verificar pip (gestor de paquetes)</strong>
+                        <div class="code-block linux">
+                            pip3 --version
+                        </div>
+                        <p>Si no está instalado:</p>
+                        <div class="code-block linux">
+                            sudo apt install -y python3-pip
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <strong>Instalar dependencias del sistema (necesarias para Playwright)</strong>
+                        <div class="code-block linux">
+                            sudo apt install -y \<br>
+                                libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 \<br>
+                                libgbm1 libasound2 libxshmfence1 libgtk-3-0 \<br>
+                                libxcomposite1 libxcursor1 libxdamage1 libxrandr2 \<br>
+                                libpango-1.0-0 libcairo2 libatspi2.0-0 libxfixes3
+                        </div>
+                        <p>Dependencias para OCR:</p>
+                        <div class="code-block linux">
+                            sudo apt install -y tesseract-ocr tesseract-ocr-spa
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <strong>Crear carpeta del proyecto</strong>
+                        <div class="code-block linux">
+                            mkdir -p ~/WhatsAppMonitor<br>
+                            cd ~/WhatsAppMonitor
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <strong>Copiar los archivos del proyecto</strong>
+                        <p>Copia todos los archivos <code>.py</code>, <code>AGENT.md</code> y <code>requirements.txt</code> a esta carpeta.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <strong>Crear entorno virtual (recomendado)</strong>
+                        <div class="code-block linux">
+                            python3 -m venv venv<br>
+                            source venv/bin/activate
+                        </div>
+                        <div class="alert alert-info">
+                            💡 El entorno virtual aísla las dependencias y evita conflictos con otros proyectos.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">8</div>
+                    <div class="step-content">
+                        <strong>Instalar dependencias Python</strong>
+                        <div class="code-block linux">
+                            pip install --upgrade pip<br>
+                            pip install -r requirements.txt
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">9</div>
+                    <div class="step-content">
+                        <strong>Instalar Playwright</strong>
+                        <div class="code-block linux">python -m playwright install chromium</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">10</div>
+                    <div class="step-content">
+                        <strong>Configurar API Key</strong>
+                        <div class="code-block linux">echo "DEEPSEEK_API_KEY=tu_api_key_aqui" > .env</div> 
+                        <div class="alert alert-info"> 💡se explica en la parte de WINDOWS, donde obtener la clave (KEY) :  <strong><div class="step-number">6</div> Configurar API Key de DeepSeek</strong></div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">11</div>
+                    <div class="step-content">
+                        <strong>Ejecutar la aplicación</strong>
+                        <p>Si usas entorno virtual:</p>
+                        <div class="code-block linux">
+                            source ~/WhatsAppMonitor/venv/bin/activate<br>
+                            python launcher.py
+                        </div>
+                        <p>Si NO usas entorno virtual:</p>
+                        <div class="code-block linux">python3 main.py</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Solución de problemas -->
+            <div class="section">
+                <h2>🔧 Solución de problemas comunes</h2>
+                
+                <div class="alert alert-error">
+                    <strong>❌ Error: uvloop no funciona en Windows</strong>
+                    <p>La aplicación ya incluye una detección automática. Si ves errores, edita <code>main.py</code> y comenta las líneas de uvloop.</p>
+                </div>
+                
+                <div class="alert alert-error">
+                    <strong>❌ Error: Playwright no encuentra chromium</strong>
+                    <div class="code-block">python -m playwright install chromium --force</div>
+                </div>
+                
+                <div class="alert alert-error">
+                    <strong>❌ Error: DEEPSEEK_API_KEY not found</strong>
+                    <p>Verifica que el archivo <code>.env</code> existe y tiene el formato correcto:</p>
+                    <div class="code-block">DEEPSEEK_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx</div>
+                </div>
+                
+                <div class="alert alert-error">
+                    <strong>❌ Error: PyQt6 no se instala en Linux</strong>
+                    <div class="code-block linux">
+                        sudo apt install -y python3-pyqt6<br>
+                        pip install PyQt6 --no-cache-dir
+                    </div>
+                </div>
+                
+                <div class="alert alert-warning">
+                    <strong>⚠️ El navegador no se abre o se cierra solo</strong>
+                    <ul>
+                        <li>Cierra WhatsApp Web en tu navegador normal</li>
+                        <li>Borra la carpeta <code>session_wa_jobs</code> y vuelve a intentar</li>
+                        <li>Verifica que no haya antivirus bloqueando</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Estructura de archivos -->
+            <div class="section">
+                <h2>📁 Estructura de archivos esperada</h2>
+                <div class="file-tree">
+                    <div class="folder">📁 WhatsAppMonitor/</div>
+                    <div class="file">  ├── launcher.py</div>
+                    <div class="file">  ├── main_window.py</div>
+                    <div class="file">  ├── main.py</div>
+                    <div class="file">  ├── ai.py</div>
+                    <div class="file">  ├── config.py</div>
+                    <div class="file">  ├── whatsapp.py</div>
+                    <div class="file">  ├── storage.py</div>
+                    <div class="file">  ├── ocr_module.py</div>
+                    <div class="file">  ├── sentinel_mode.py</div>
+                    <div class="file">  ├── stealth_setup.py</div>
+                    <div class="file">  ├── mouse_simulator.py</div>
+                    <div class="file">  ├── reading_simulator.py</div>
+                    <div class="file">  ├── human_idle_behavior.py</div>
+                    <div class="file">  ├── typing_simulator.py</div>
+                    <div class="file">  ├── utils.py</div>
+                    <div class="file">  ├── AGENT.md</div>
+                    <div class="file">  ├── requirements.txt</div>
+                    <div class="file">  ├── .env</div>
+                    <div class="folder">  └── session_wa_jobs/</div>
+                </div>
+            </div>
+            
+            <!-- Verificación de instalación -->
+            <div class="section">
+                <h2>✅ Verificación de instalación correcta</h2>
+                <p>Ejecuta este comando para verificar todas las dependencias:</p>
+                <div class="code-block">
+                    python -c "<br>
+                    import sys<br>
+                    print(f'Python {sys.version}')<br>
+                    <br>
+                    try:<br>
+                        import playwright<br>
+                        print('✅ playwright')<br>
+                    except: print('❌ playwright')<br>
+                    <br>
+                    try:<br>
+                        import PyQt6<br>
+                        print('✅ PyQt6')<br>
+                    except: print('❌ PyQt6')<br>
+                    <br>
+                    try:<br>
+                        import openai<br>
+                        print('✅ openai')<br>
+                    except: print('❌ openai')<br>
+                    "
+                </div>
+            </div>
+            
+            <!-- Primer uso -->
+            <div class="section">
+                <h2>🚀 Primer uso</h2>
+                <div class="alert alert-success">
+                    <ol>
+                        <li>Ejecuta <code>python launcher.py</code></li>
+                        <li>Configura tu API Key de DeepSeek (Botón "🔑 CONFIGURAR API")</li>
+                        <li>Presiona "▶ INICIAR"</li>
+                        <li>Escanea el código QR con tu WhatsApp</li>
+                        <li>¡El monitor comenzará a funcionar!</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- Soporte rápido -->
+            <div class="section">
+                <h2>📞 Soporte rápido</h2>
+                <table class="troubleshoot-table">
+                    <thead>
+                        <tr><th>Problema</th><th>Acción</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>No se abre la GUI</td><td><code>pip install PyQt6 --force-reinstall</code></td></tr>
+                        <tr><td>Error de QR</td><td>Reinicia la app y vuelve a escanear</td></tr>
+                        <tr><td>No detecta ofertas</td><td>Verifica que la API Key sea válida</td></tr>
+                        <tr><td>Se congela</td><td>Borra <code>session_wa_jobs</code> y reinicia</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Nota final -->
+            <div class="alert alert-info">
+                <strong>💡 ¿Necesitas ayuda adicional?</strong> Usa una IA para que te facilite los pasos a seguir usando este documento.
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>WhatsApp Monitor  v13 - Anti-Detección Avanzada</p>
+            <p>Manual de instalación - Documentación oficial</p>
+        </div>
+    </div>
+</body>
+</html>
