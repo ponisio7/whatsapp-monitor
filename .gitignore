@@ -16,3 +16,8 @@ sentinel_data/
 # Archivos del sistema
 .DS_Store
 Thumbs.db
+
+#los .json
+*.json
+ignore_rules.json
+*.db-journal
