@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Monitor  - Manual de Instalación</title>
+    <title>WhatsApp Monitor - Manual de Instalación</title>
     <style>
         * {
             margin: 0;
@@ -28,7 +28,6 @@
             overflow: hidden;
         }
         
-        /* Header */
         .header {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
@@ -55,12 +54,10 @@
             margin-top: 15px;
         }
         
-        /* Content */
         .content {
             padding: 40px;
         }
         
-        /* Sections */
         .section {
             margin-bottom: 40px;
         }
@@ -79,42 +76,6 @@
             font-size: 1.3em;
         }
         
-        /* Cards */
-        .os-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 20px 0;
-        }
-        
-        .os-card {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            border-top: 4px solid;
-        }
-        
-        .os-card.windows {
-            border-top-color: #0078D4;
-        }
-        
-        .os-card.linux {
-            border-top-color: #FCC624;
-        }
-        
-        .os-card h3 {
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .os-card h3 img {
-            width: 32px;
-            height: 32px;
-        }
-        
-        /* Tables */
         .requirements-table {
             width: 100%;
             border-collapse: collapse;
@@ -137,7 +98,6 @@
             background: #f9f9f9;
         }
         
-        /* Code blocks */
         .code-block {
             background: #1e1e1e;
             color: #d4d4d4;
@@ -157,7 +117,6 @@
             border-left: 4px solid #FCC624;
         }
         
-        /* Alert boxes */
         .alert {
             padding: 15px 20px;
             border-radius: 8px;
@@ -188,7 +147,6 @@
             border-left: 4px solid #17a2b8;
         }
         
-        /* Step boxes */
         .step {
             display: flex;
             margin: 20px 0;
@@ -214,7 +172,6 @@
             flex: 1;
         }
         
-        /* File tree */
         .file-tree {
             background: #f8f9fa;
             padding: 20px;
@@ -232,7 +189,6 @@
             color: #4CAF50;
         }
         
-        /* Troubleshooting table */
         .troubleshoot-table {
             width: 100%;
             border-collapse: collapse;
@@ -249,7 +205,6 @@
             color: white;
         }
         
-        /* Footer */
         .footer {
             background: #1a1a2e;
             color: white;
@@ -258,54 +213,33 @@
             font-size: 0.9em;
         }
         
-        /* Print styles */
         @media print {
             body {
                 background: white;
                 padding: 0;
             }
-            
             .container {
                 box-shadow: none;
                 border-radius: 0;
             }
-            
             .header {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-            
-            .code-block {
+            .code-block, .alert {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
                 page-break-inside: avoid;
             }
-            
-            .alert {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                page-break-inside: avoid;
-            }
-            
             .section {
-                page-break-inside: avoid;
-            }
-            
-            .os-cards {
                 page-break-inside: avoid;
             }
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            .os-cards {
-                grid-template-columns: 1fr;
-            }
-            
             .content {
                 padding: 20px;
             }
-            
             .header h1 {
                 font-size: 1.8em;
             }
@@ -314,14 +248,12 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="header">
-            <h1>📱 WhatsApp Monitor </h1>
+            <h1>📱 WhatsApp Monitor</h1>
             <p>Manual de Instalación Paso a Paso</p>
             <div class="version-badge">Versión v13 - Anti-Detección Avanzada</div>
         </div>
         
-        <!-- Content -->
         <div class="content">
             <!-- Requisitos del Sistema -->
             <div class="section">
@@ -360,21 +292,28 @@
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <strong>Descargar el proyecto</strong>
-                        <p>Crea una carpeta para el proyecto:</p>
+                        <strong>Descargar el proyecto desde GitHub</strong>
+                        <p>Opción 1 - Clonar con Git (recomendado):</p>
                         <div class="code-block windows">
-                            mkdir C:\WhatsAppMonitor<br>
-                            cd C:\WhatsAppMonitor
+                            git clone https://github.com/ponisio7/whatsapp-monitor.git<br>
+                            cd whatsapp-monitor
                         </div>
-                        
+                        <p>Opción 2 - Descargar ZIP manual:</p>
+                        <ol>
+                            <li>Ve a <a href="https://github.com/ponisio7/whatsapp-monitor">https://github.com/ponisio7/whatsapp-monitor</a></li>
+                            <li>Haz clic en el botón verde <strong>"Code"</strong></li>
+                            <li>Selecciona <strong>"Download ZIP"</strong></li>
+                            <li>Extrae el ZIP en una carpeta (ej: C:\WhatsAppMonitor)</li>
+                            <li>Renombra la carpeta a "whatsapp-monitor" si es necesario</li>
+                        </ol>
                     </div>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <strong>Copiar los archivos del proyecto</strong>
-                        <p>Copia todos los archivos <code>.py</code>, <code>AGENT.md</code> y <code>requirements.txt</code> a esta carpeta.</p>
+                        <strong>Acceder a la carpeta del proyecto</strong>
+                        <div class="code-block windows">cd C:\WhatsAppMonitor\whatsapp-monitor</div>
                     </div>
                 </div>
                 
@@ -382,9 +321,7 @@
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <strong>Instalar dependencias</strong>
-                        <p>Abre <strong>Símbolo del sistema (CMD)</strong> como administrador:</p>
                         <div class="code-block windows">
-                            cd C:\WhatsAppMonitor<br>
                             python -m pip install --upgrade pip<br>
                             python -m pip install -r requirements.txt
                         </div>
@@ -411,6 +348,7 @@
                         <p>1. Obtén una API Key en <a href="https://platform.deepseek.com/">platform.deepseek.com</a></p>
                         <p>2. Crea un archivo <code>.env</code> en la carpeta del proyecto:</p>
                         <div class="code-block windows">echo DEEPSEEK_API_KEY=tu_api_key_aqui > .env</div>
+                        <div class="alert alert-info">💡 La API Key debe empezar con <code>sk-</code></div>
                     </div>
                 </div>
                 
@@ -423,7 +361,7 @@
                 </div>
             </div>
             
-                      <!-- Linux Installation CORREGIDA -->
+            <!-- Linux Installation -->
             <div class="section">
                 <h2>🐧 Instalación en Linux (Ubuntu/Debian)</h2>
                 
@@ -431,9 +369,7 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <strong>Verificar Python instalado</strong>
-                        <div class="code-block linux">
-                            python3 --version
-                        </div>
+                        <div class="code-block linux">python3 --version</div>
                         <p><strong>Versiones aceptables:</strong> 3.9, 3.10, 3.11, 3.12</p>
                         <div class="alert alert-success">
                             ✅ Si ya tienes Python 3.9-3.12, <strong>no necesitas instalarlo</strong>, pasa al paso 2.
@@ -447,69 +383,40 @@
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <strong>Instalar Python SOLO si es necesario</strong>
-                        <p><em>Solo ejecuta esto si NO tienes Python o tu versión es inferior a 3.9</em></p>
-                        <div class="code-block linux">
-                            sudo apt update<br>
-                            sudo apt install -y python3.11 python3-pip python3-venv
-                        </div>
-                        
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <strong>Verificar pip (gestor de paquetes)</strong>
-                        <div class="code-block linux">
-                            pip3 --version
-                        </div>
-                        <p>Si no está instalado:</p>
-                        <div class="code-block linux">
-                            sudo apt install -y python3-pip
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
                         <strong>Instalar dependencias del sistema (necesarias para Playwright)</strong>
                         <div class="code-block linux">
-                            sudo apt install -y \<br>
+                            sudo apt update<br>
+                            sudo apt install -y git unzip \<br>
                                 libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 \<br>
                                 libgbm1 libasound2 libxshmfence1 libgtk-3-0 \<br>
                                 libxcomposite1 libxcursor1 libxdamage1 libxrandr2 \<br>
                                 libpango-1.0-0 libcairo2 libatspi2.0-0 libxfixes3
                         </div>
                         <p>Dependencias para OCR:</p>
+                        <div class="code-block linux">sudo apt install -y tesseract-ocr tesseract-ocr-spa</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <strong>Descargar el proyecto desde GitHub</strong>
+                        <p>Opción 1 - Clonar con Git (recomendado):</p>
                         <div class="code-block linux">
-                            sudo apt install -y tesseract-ocr tesseract-ocr-spa
+                            git clone https://github.com/ponisio7/whatsapp-monitor.git<br>
+                            cd whatsapp-monitor
+                        </div>
+                        <p>Opción 2 - Descargar ZIP manual:</p>
+                        <div class="code-block linux">
+                            wget https://github.com/ponisio7/whatsapp-monitor/archive/refs/heads/main.zip<br>
+                            unzip main.zip<br>
+                            cd whatsapp-monitor-main
                         </div>
                     </div>
                 </div>
                 
                 <div class="step">
-                    <div class="step-number">5</div>
-                    <div class="step-content">
-                        <strong>Crear carpeta del proyecto</strong>
-                        <div class="code-block linux">
-                            mkdir -p ~/WhatsAppMonitor<br>
-                            cd ~/WhatsAppMonitor
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">6</div>
-                    <div class="step-content">
-                        <strong>Copiar los archivos del proyecto</strong>
-                        <p>Copia todos los archivos <code>.py</code>, <code>AGENT.md</code> y <code>requirements.txt</code> a esta carpeta.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">7</div>
+                    <div class="step-number">4</div>
                     <div class="step-content">
                         <strong>Crear entorno virtual (recomendado)</strong>
                         <div class="code-block linux">
@@ -523,7 +430,7 @@
                 </div>
                 
                 <div class="step">
-                    <div class="step-number">8</div>
+                    <div class="step-number">5</div>
                     <div class="step-content">
                         <strong>Instalar dependencias Python</strong>
                         <div class="code-block linux">
@@ -534,7 +441,7 @@
                 </div>
                 
                 <div class="step">
-                    <div class="step-number">9</div>
+                    <div class="step-number">6</div>
                     <div class="step-content">
                         <strong>Instalar Playwright</strong>
                         <div class="code-block linux">python -m playwright install chromium</div>
@@ -542,25 +449,22 @@
                 </div>
                 
                 <div class="step">
-                    <div class="step-number">10</div>
+                    <div class="step-number">7</div>
                     <div class="step-content">
                         <strong>Configurar API Key</strong>
-                        <div class="code-block linux">echo "DEEPSEEK_API_KEY=tu_api_key_aqui" > .env</div> 
-                        <div class="alert alert-info"> 💡se explica en la parte de WINDOWS, donde obtener la clave (KEY) :  <strong><div class="step-number">6</div> Configurar API Key de DeepSeek</strong></div>
+                        <div class="code-block linux">echo "DEEPSEEK_API_KEY=tu_api_key_aqui" > .env</div>
+                        <div class="alert alert-info">💡 Se explica en la parte de Windows, paso 6, cómo obtener la API Key</div>
                     </div>
                 </div>
                 
                 <div class="step">
-                    <div class="step-number">11</div>
+                    <div class="step-number">8</div>
                     <div class="step-content">
                         <strong>Ejecutar la aplicación</strong>
                         <p>Si usas entorno virtual:</p>
-                        <div class="code-block linux">
-                            source ~/WhatsAppMonitor/venv/bin/activate<br>
-                            python launcher.py
-                        </div>
+                        <div class="code-block linux">python launcher.py</div>
                         <p>Si NO usas entorno virtual:</p>
-                        <div class="code-block linux">python3 main.py</div>
+                        <div class="code-block linux">python3 launcher.py</div>
                     </div>
                 </div>
             </div>
@@ -583,6 +487,8 @@
                     <strong>❌ Error: DEEPSEEK_API_KEY not found</strong>
                     <p>Verifica que el archivo <code>.env</code> existe y tiene el formato correcto:</p>
                     <div class="code-block">DEEPSEEK_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx</div>
+                    <p>Verifica con:</p>
+                    <div class="code-block">cat .env</div>
                 </div>
                 
                 <div class="alert alert-error">
@@ -601,13 +507,20 @@
                         <li>Verifica que no haya antivirus bloqueando</li>
                     </ul>
                 </div>
+                
+                <div class="alert alert-warning">
+                    <strong>⚠️ Git no está instalado</strong>
+                    <p>En Windows: Descarga desde <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p>
+                    <p>En Linux:</p>
+                    <div class="code-block linux">sudo apt install git</div>
+                </div>
             </div>
             
             <!-- Estructura de archivos -->
             <div class="section">
                 <h2>📁 Estructura de archivos esperada</h2>
                 <div class="file-tree">
-                    <div class="folder">📁 WhatsAppMonitor/</div>
+                    <div class="folder">📁 whatsapp-monitor/</div>
                     <div class="file">  ├── launcher.py</div>
                     <div class="file">  ├── main_window.py</div>
                     <div class="file">  ├── main.py</div>
@@ -625,6 +538,8 @@
                     <div class="file">  ├── utils.py</div>
                     <div class="file">  ├── AGENT.md</div>
                     <div class="file">  ├── requirements.txt</div>
+                    <div class="file">  ├── manual.html</div>
+                    <div class="file">  ├── README.md</div>
                     <div class="file">  ├── .env</div>
                     <div class="folder">  └── session_wa_jobs/</div>
                 </div>
@@ -687,15 +602,14 @@
                 </table>
             </div>
             
-            <!-- Nota final -->
             <div class="alert alert-info">
-                <strong>💡 ¿Necesitas ayuda adicional?</strong> Usa una IA para que te facilite los pasos a seguir usando este documento.
+                <strong>💡 Enlace al repositorio:</strong> 
+                <a href="https://github.com/ponisio7/whatsapp-monitor">https://github.com/ponisio7/whatsapp-monitor</a>
             </div>
         </div>
         
-        <!-- Footer -->
         <div class="footer">
-            <p>WhatsApp Monitor  v13 - Anti-Detección Avanzada</p>
+            <p>WhatsApp Monitor v13 - Anti-Detección Avanzada</p>
             <p>Manual de instalación - Documentación oficial</p>
         </div>
     </div>
